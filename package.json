@@ -1,0 +1,29 @@
+{
+  "name": "etiquetas-vin-bdd",
+  "version": "1.0.0",
+  "description": "Sistema de impressão de etiquetas veiculares por VIN especificado com BDD (Gherkin em português) e executado com Cucumber em duas camadas: domínio e API HTTP.",
+  "main": "src/servidor.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/servidor.js",
+    "bdd": "cucumber-js --profile dominio",
+    "bdd:api": "cucumber-js --profile api",
+    "bdd:smoke": "cucumber-js --profile dominio --tags @smoke",
+    "bdd:regressao": "cucumber-js --profile dominio --tags \"@regressao\"",
+    "test": "npm run bdd && npm run bdd:api",
+    "test:coverage": "c8 --reporter=text --reporter=lcov npm test"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "author": "Marcelo Rodrigues",
+  "license": "MIT",
+  "dependencies": {
+    "express": "5.1.0"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "13.2.1",
+    "c8": "10.1.3",
+    "supertest": "7.1.4"
+  }
+}
